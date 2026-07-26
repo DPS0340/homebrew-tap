@@ -25,8 +25,14 @@ cask "kubeoptimizer" do
   end
 
   name "kubeoptimizer"
-  desc "Read-only Kubernetes cost waste scanner"
-  homepage "https://github.com/DPS0340/kubeoptimizer"
+  desc "Read-only Kubernetes cost waste scanner (renamed to cost-scan)"
+  homepage "https://github.com/DPS0340/cost-scan"
+
+  # Renamed to cost-scan (krew-index review: 'kube' is redundant under
+  # kubectl, and 'optimizer' oversells a read-only scanner). This cask
+  # is frozen at the last release under the old name; `brew upgrade`
+  # now tells people where to go instead of silently pinning 0.3.0.
+  deprecate! date: "2026-07-26", because: "is now `cost-scan`"
 
   livecheck do
     skip "Auto-generated on release."
